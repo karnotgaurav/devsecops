@@ -1,0 +1,9 @@
+FROM python:3.11-slim
+WORKDIR /apps/
+COPY app/ /apps/
+RUN pip install -U pip setuptools && pip install -r /apps/requirements.txt
+RUN useradd -m appuser
+USER appuser
+EXPOSE 5050
+ENTRYPOINT ["python"]
+CMD ["app.py"]
