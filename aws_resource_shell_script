@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#########################################
+# Author: Gaurav Singh Karnot
+# Date: 04/08/2026
+# Version: 1.0
+#
+# Script to list AWS S3 buckets and EC2 instances
+#########################################
+
+set -x
+
+echo "Listing S3 buckets..."
+aws s3 ls
+
+echo "Listing EC2 instances..."
+aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId'
+
+echo "Done!"
